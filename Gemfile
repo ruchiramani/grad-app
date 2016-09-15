@@ -23,6 +23,11 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'omniauth'
+gem 'omniauth-oauth2'
+gem 'oauth2', git: "https://github.com/flatiron-school/oauth2.git"
+gem "omniauth-learn" 
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
