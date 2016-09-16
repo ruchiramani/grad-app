@@ -3,13 +3,17 @@ class CohortsController < ApplicationController
   def new 
     @cohort = Cohort.new
   end
+  
+  def show 
+    @cohort = Cohort.find(params[:id])
+  end
 
   def create 
     @cohort = Cohort.new(cohort_params)
     if @cohort.save
       UserCohort.create(user: current_user, cohort: @cohort) 
       CohortStudentBuilder.new(@cohort, @client).execute
-      redirect_to root_path 
+      redirect_to cohort_path(@cohort) 
     end
   end
 
