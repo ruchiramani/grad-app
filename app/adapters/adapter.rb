@@ -9,7 +9,7 @@ class Adapter
       end
 
       def students_for_batch(batch_id)
-         RestClient.get("#{LEARN_API_BASE_URL}/batches/#{batch_id}/users", headers: request_header) 
+        RestClient.get("#{LEARN_API_BASE_URL}/batches/#{batch_id}/users", request_header) 
       end
 
       def request_header
