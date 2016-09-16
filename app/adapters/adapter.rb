@@ -1,4 +1,3 @@
-require 'rest-client'
 class Adapter
   class LearnApi
     class Client
@@ -10,12 +9,13 @@ class Adapter
       end
 
       def students_for_batch(batch_id)
-        RestClient.get("#{LEARN_API_BASE_URL}/batches/#{batch_id}/users", headers: request_header) 
+         RestClient.get("#{LEARN_API_BASE_URL}/batches/#{batch_id}/users", headers: request_header) 
       end
 
       def request_header
-        {"Authorization" => "Bearer #{oauth_token}"}
+        {"Authorization": "Bearer #{oauth_token}"}
       end
+
     end
   end
 end
