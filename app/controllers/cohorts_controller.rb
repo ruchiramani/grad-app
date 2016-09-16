@@ -5,11 +5,11 @@ class CohortsController < ApplicationController
   end
 
   def create 
-    binding.pry
     @cohort = Cohort.new(cohort_params)
     if @cohort.save
       UserCohort.create(user: current_user, cohort: @cohort) 
       CohortStudentBuilder.new(@cohort, @client).execute
+      redirect_to root_path 
     end
   end
 
