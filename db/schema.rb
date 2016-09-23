@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909185200) do
+ActiveRecord::Schema.define(version: 20160916125938) do
+
+  create_table "cohorts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "learn_batch_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "entries", force: :cascade do |t|
     t.string   "name"
@@ -21,9 +28,31 @@ ActiveRecord::Schema.define(version: 20160909185200) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "email"
+    t.string   "learn_uid"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "cohort_id"
+  end
+
+  add_index "students", ["cohort_id"], name: "index_students_on_cohort_id"
+
+  create_table "user_cohorts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "cohort_id"
+  end
+
+  add_index "user_cohorts", ["cohort_id"], name: "index_user_cohorts_on_cohort_id"
+  add_index "user_cohorts", ["user_id"], name: "index_user_cohorts_on_user_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "learn_uid"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "learn_oauth_token"
   end
 
 end

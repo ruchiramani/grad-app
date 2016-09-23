@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
-
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
@@ -26,6 +24,12 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 
 gem "font-awesome-rails"
 
+gem 'omniauth'
+gem 'omniauth-oauth2'
+gem 'oauth2', git: "https://github.com/flatiron-school/oauth2.git"
+gem "omniauth-learn" 
+gem 'figaro'
+gem 'rest-client'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -38,6 +42,7 @@ gem "font-awesome-rails"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry-rails'
 end
 
 group :development do
