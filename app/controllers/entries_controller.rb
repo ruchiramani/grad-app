@@ -8,6 +8,7 @@ class EntriesController < ApplicationController
    def create
      binding.pry
      @entry = Entry.create(entry_params)
+     @entry.user = User.find(params[user])
      redirect_to "/"
    end
 
