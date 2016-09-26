@@ -1,3 +1,10 @@
-<% cohort.students.each do |student| %> 
-  <li><%= student.first_name %> </li>
-<% end %> 
+<% @students = cohort.students %>
+<% @entry = Entry.new %>
+
+<%= form_for @entry do |f| %>
+<%= f.collection_select :user, @students, :id, :first_name %>
+ <%= f.text_field :name, placeholder: 'your name' %>
+ <%= f.text_field :content, placeholder: 'message' %>
+  <%= f.submit 'Submit' %>
+
+  <% end %>

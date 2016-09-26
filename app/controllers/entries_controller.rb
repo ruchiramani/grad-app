@@ -6,6 +6,7 @@ class EntriesController < ApplicationController
    end
 
    def create
+     binding.pry
      @entry = Entry.create(entry_params)
      redirect_to "/"
    end
@@ -18,7 +19,7 @@ class EntriesController < ApplicationController
    private
 
    def entry_params
-    params.permit(:name, :content)
+    params.require(:entry).permit(:name, :content)
    end
 
 end
