@@ -4,16 +4,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-      user = User.find_or_create_from_oauth(@auth_hash)
-    if user
-      log_in(user)
-      cohort = user.cohort_ids[0]
-      redirect_to cohort_path(cohort)
+      @user = User.find_or_create_from_oauth(@auth_hash)
+    if @user
+      log_in(@user)
+      cohort = @user.cohort_ids[0]
+      redirect_to user_path(@user)
     end
 
   end
 
   def destroy
+  session.delete(:user_id)
+   @user = nil
+   redirect_to root_path
   end
 
   private

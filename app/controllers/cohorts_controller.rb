@@ -13,7 +13,8 @@ class CohortsController < ApplicationController
     if @cohort.save
       UserCohort.create(user: current_user, cohort: @cohort)
       CohortStudentBuilder.new(@cohort, @client).execute
-      redirect_to cohort_path(@cohort)
+
+      redirect_to user_path(current_user)
     end
   end
 
@@ -23,7 +24,6 @@ class CohortsController < ApplicationController
   end
 
   def set_api_client
-    binding.pry
     @client = Adapter::LearnApi::Client.new(token: current_user.learn_oauth_token)
   end
 end

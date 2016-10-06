@@ -1,0 +1,63 @@
+<% if @user.admin %>
+<%= render 'cohorts/form' %>
+<% end %>
+
+
+
+
+
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <!-- <img class="img-round left" src="/assets/ian-candy.jpg" alt="Ian Candy"></a> -->
+      </div>
+      <div class="col-xs-6 signin text-right navbar-nav">
+
+
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+
+
+</header>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+            <a href="/logout" class="Scroll">Logout</a>
+            <% else %>
+            <a href="/login" class="scroll">Login</a>
+            <% end %>
+
+
+
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <a href="/entries/new" class="scroll">Add a Message</a>
+    <a href="/entries/search" class="scroll">See a message</a>
+
+
+<footer>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <p>Made with <i class="fa fa-heart fa-lg" style="color: red;"></i> for Ian at the Flatiron School </p>
+      </div>
+    </div>
+
+  </div>
+</footer>
+</body>
