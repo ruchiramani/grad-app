@@ -3,7 +3,7 @@ class CohortStudentBuilder
 
   def initialize(cohort, learn_client)
      @cohort = cohort
-     @learn_client = learn_client 
+     @learn_client = learn_client
   end
 
   def execute
@@ -14,11 +14,12 @@ class CohortStudentBuilder
   def build_students(students)
     students["users"].each do |s|
       if !s["admin"]
-        Student.find_or_create_by(learn_uid: s["id"]).tap do |student| 
+        User.find_or_create_by(learn_uid: s["id"]).tap do |student|
           student.email = s["email"]
           student.first_name = s["first_name"]
           student.last_name = s["last_name"]
-          student.cohort_id = cohort.id
+          student.admin = s["admin"]
+          student.cohort_ids = cohort.id
           student.save
        end
       end

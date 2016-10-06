@@ -1,0 +1,6 @@
+<% @students = current_user.cohorts[0].students %>
+<%= form_tag("/search", method: "get") do %>
+  <%= select_tag "student", options_from_collection_for_select(@students, "id", "first_name") %>
+  <%= submit_tag("Search") %>
+
+<% end %>

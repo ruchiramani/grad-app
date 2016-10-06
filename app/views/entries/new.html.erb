@@ -1,28 +1,11 @@
-<div id="background-image">
-   <div class="container">
-       <div class="panel-transparent">
-         <div class="row col-xs-8 well well-sm">
-           <form action="/entries" method="post" class="form-horizontal margin-top margin-80">
-             <div class="form-group">
-               <label for="name" class="col-sm-3 control-label">My name is...</label>
-               <div class="col-sm-9">
-                 <input type="text" class="form-control" name="name" placeholder="Adele Goldstine">
-               </div>
-             </div>
-             <div class="form-group">
-               <label for="content" class="col-sm-3 control-label" name="content" style="color: black;">My favorite memory of Ian is...</label>
-               <div class="col-sm-9">
-                 <input type="text" class="form-control" name="content" placeholder="Every feelings Friday.">
-               </div>
-             </div>
+<% @entry = Entry.new %>
+<%= form_for @entry do |f| %>
+<% if current_user.cohorts[0] %>
+<% @students = current_user.cohorts[0].students %>
+<%= f.collection_select :user_id, @students, :id, :first_name %>
+ <!-- <%= f.text_field :name, placeholder: 'your name' %> -->
+ <%= f.text_field :content, placeholder: 'message' %>
+  <%= f.submit 'Submit' %>
+  <% end %>
 
-             <div class="form-group">
-               <div class="col-sm-offset-3 col-sm-4">
-                 <button type="submit" class="btn btn-default">Submit!</button>
-               </div>
-             </div>
-           </form>
-         </div>
-       </div>
-     </div>
- </div>
+  <% end %>
